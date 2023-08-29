@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/users', UserController::class);
+Route::resource('/users', UserController::class)->middleware('auth.admin');
 
 Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
 Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create');

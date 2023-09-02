@@ -14,4 +14,19 @@
             </div>
         </div>
     </div>
+
+    <div class="mt-4">
+        <x-input-label for="task" :value="__('Task')" />
+
+        <x-text-input id="task" class="block mt-1 w-full" 
+            type="text" 
+            name="task" 
+            required 
+            autocomplete="task" />
+
+        <x-input-error :messages="$errors->get('task')" class="mt-2" />
+    </div>
+    <x-button class="mt-4">
+        {{ __('+') }}
+    </x-button>
 </x-app-layout>

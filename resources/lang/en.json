@@ -998,6 +998,7 @@
     "Use a recovery code": "Use a recovery code",
     "Use an authentication code": "Use an authentication code",
     "Users": "Users",
+    "Users List": "Users List",
     "Users Currently Trialing": "Users Currently Trialing",
     "Utah": "Utah",
     "Uzbekistan": "Uzbekistan",
@@ -1125,5 +1126,7 @@
     "Zimbabwe": "Zimbabwe",
     "ZIP / Postal Code": "ZIP / Postal Code",
     "Zip / Postal Code": "Zip / Postal Code",
-    "Åland Islands": "Åland Islands"
+    "Åland Islands": "Åland Islands",
+    "Ticket List": "Ticket List",
+    "Ticket": "Ticket"
 }

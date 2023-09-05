@@ -11,7 +11,7 @@ class LocaleController extends Controller
     {
         $lang = $request->language;
 
-        if (!in_array($lang, config('lang'))) {
+        if (!in_array($lang, config('app.lang'))) {
             abort(400);
         }
 

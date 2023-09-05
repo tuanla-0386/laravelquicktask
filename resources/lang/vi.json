@@ -998,6 +998,7 @@
     "Use a recovery code": "Sử dụng mã khôi phục",
     "Use an authentication code": "Sử dụng mã xác minh",
     "Users": "người dùng",
+    "Users List": "Danh sách người dùng",
     "Users Currently Trialing": "Người dùng hiện đang dùng thử",
     "Utah": "bang Utah",
     "Uzbekistan": "Uzbekistan",
@@ -1125,5 +1126,7 @@
     "Zimbabwe": "Zimbabwe",
     "ZIP / Postal Code": "ZIP / Mã bưu điện",
     "Zip / Postal Code": "Zip / Mã Bưu Điện",
-    "Åland Islands": "Quần đảo Åland"
+    "Åland Islands": "Quần đảo Åland",
+    "Ticket List": "Danh sách vé",
+    "Ticket": "Vé"
 }

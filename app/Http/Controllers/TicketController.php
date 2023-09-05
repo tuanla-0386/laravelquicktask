@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Ticket\StoreTicketRequest;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
@@ -14,7 +16,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        return DB::table('tickets')->select('*')->get();
     }
 
     /**
@@ -33,9 +35,18 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTicketRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        DB::table('tickets')->insert([
+            [
+                'name' => $validatedData['name'],
+                'user_id' => $validatedData['user_id'],
+            ]
+        ]);
+
+        return redirect()->route('users.show', ['user' => $validatedData['user_id']]);
     }
 
     /**
@@ -69,7 +80,15 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        //
+        $validatedData = $request->validated();
+
+        DB::table('tickets')
+            ->where('id', $ticket->id)
+            ->update([
+                'name' => $validatedData['name']
+            ]);
+
+        return redirect()->route('users.show', ['user' => $ticket->user_id]);
     }
 
     /**
@@ -80,6 +99,8 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        DB::table('tickets')->delete($ticket->id);
+
+        return redirect()->route('users.show', ['user' => $ticket->user_id]);
     }
 }

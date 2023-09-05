@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,9 @@ Route::get('/dashboard', function () {
 
 Route::get('/change-locale/{language}', [LocaleController::class, 'changeLocale'])->name('locale');
 
-Route::resource('users', UserController::class)->middleware('auth.admin');
+Route::middleware('auth')->group(function() {
+    Route::resource('users', UserController::class)->middleware('auth.admin');
+    Route::resource('tickets', TicketController::class);
+});
 
 require __DIR__ . '/auth.php';

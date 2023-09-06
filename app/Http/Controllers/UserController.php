@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
+use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -104,7 +106,18 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
+        DB::beginTransaction();
+
+        try {
+            $ticket_ids = $user->tickets()->get(['id']);
+            Ticket::destroy($ticket_ids);
+            $user->delete();
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
 
         return redirect()->route('users.index');
     }
